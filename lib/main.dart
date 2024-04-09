@@ -6,6 +6,28 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  void playSound(int soundNumber) {
+    final player = AudioPlayer();
+    player.play(
+      AssetSource('note$soundNumber.wav'),
+    );
+  }
+
+  Expanded buildKey({required Color color, required int soundNumber}) {
+    return Expanded(
+      child: TextButton(
+        style: TextButton.styleFrom(backgroundColor: color),
+        onPressed: () async {
+          playSound(soundNumber);
+        },
+        child: const Text(
+          'Click Me',
+          style: TextStyle(color: Colors.white),
+        ),
+      ),
+    );
+  }
+
   const MyApp({super.key});
 
   @override
@@ -14,131 +36,18 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(useMaterial3: false),
       home: Scaffold(
+        backgroundColor: Colors.black54,
         body: SafeArea(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Container(
-                width: 100,
-                height: 50,
-                color: Colors.deepPurple,
-                child: TextButton(
-                  style:
-                      TextButton.styleFrom(backgroundColor: Colors.deepPurple),
-                  onPressed: () async {
-                    final player = AudioPlayer();
-                    player.play(
-                      AssetSource('note1.wav'),
-                    );
-                  },
-                  child: const Text(
-                    'Click Me',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-              ),
-              Container(
-                width: 100,
-                height: 50,
-                color: Colors.deepOrange,
-                child: TextButton(
-                  onPressed: () async {
-                    final player = AudioPlayer();
-                    player.play(
-                      AssetSource('note2.wav'),
-                    );
-                  },
-                  child: const Text(
-                    'Click Me',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-              ),
-              Container(
-                width: 100,
-                height: 50,
-                color: Colors.blueAccent,
-                child: TextButton(
-                  onPressed: () async {
-                    final player = AudioPlayer();
-                    player.play(
-                      AssetSource('note3.wav'),
-                    );
-                  },
-                  child: const Text(
-                    'Click Me',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-              ),
-              Container(
-                width: 100,
-                height: 50,
-                color: Colors.redAccent,
-                child: TextButton(
-                  onPressed: () async {
-                    final player = AudioPlayer();
-                    player.play(
-                      AssetSource('note4.wav'),
-                    );
-                  },
-                  child: const Text(
-                    'Click Me',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-              ),
-              Container(
-                width: 100,
-                height: 50,
-                color: Colors.black45,
-                child: TextButton(
-                  onPressed: () async {
-                    final player = AudioPlayer();
-                    player.play(
-                      AssetSource('note5.wav'),
-                    );
-                  },
-                  child: const Text(
-                    'Click Me',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-              ),
-              Container(
-                width: 100,
-                height: 50,
-                color: Colors.greenAccent,
-                child: TextButton(
-                  onPressed: () async {
-                    final player = AudioPlayer();
-                    player.play(
-                      AssetSource('note6.wav'),
-                    );
-                  },
-                  child: const Text(
-                    'Click Me',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-              ),
-              Container(
-                width: 100,
-                height: 50,
-                color: Colors.indigoAccent,
-                child: TextButton(
-                  onPressed: () async {
-                    final player = AudioPlayer();
-                    player.play(
-                      AssetSource('note7.wav'),
-                    );
-                  },
-                  child: const Text(
-                    'Click Me',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-              ),
+              buildKey(color: Colors.deepPurple, soundNumber: 1),
+              buildKey(color: Colors.blueAccent, soundNumber: 2),
+              buildKey(color: Colors.greenAccent, soundNumber: 3),
+              buildKey(color: Colors.indigoAccent, soundNumber: 4),
+              buildKey(color: Colors.orangeAccent, soundNumber: 5),
+              buildKey(color: Colors.pinkAccent, soundNumber: 6),
+              buildKey(color: Colors.teal, soundNumber: 7),
             ],
           ),
         ),
