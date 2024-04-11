@@ -20,10 +20,7 @@ class MyApp extends StatelessWidget {
         onPressed: () async {
           playSound(soundNumber);
         },
-        child: const Text(
-          'Click Me',
-          style: TextStyle(color: Colors.white),
-        ),
+        child: const Text('click'),
       ),
     );
   }
